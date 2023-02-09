@@ -24,7 +24,7 @@ export default function Musics() {
   const [musics, setMusics] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [urlPLay, setUrlPlay] = useState('');
-  const [currentMusic, setCurrentMusic] = useState(null);
+  const [currentMusic, setCurrentMusic] = useState(musics[0].id);
   // const token = sessionStorage.getItem('token');
   const userId = sessionStorage.getItem('userId');
   const [show, setShow] = useState(true);
