@@ -1,4 +1,4 @@
-# School Application Web
+# Functional Music Streamer Application
 *React Application*
 
 
@@ -12,7 +12,6 @@ The template is a working application with a minimal setup. It contains:
  * Nodejs
  * React 
  * Axios
- * Redux
  
 Ulr application `http://localhost:3000`
 
@@ -20,7 +19,7 @@ Ulr application `http://localhost:3000`
 
 Node version: *18.13.0*
 
-Necessary connection with the back end, you can find the back end in the `https://github.com/VitorTenor/schoolApplicationReactWeb`
+Necessary connection with the back end, you can find the back end in the `https://github.com/VitorTenor/musicStreamerApplicationJavaApi`
 
 Run the comand `npm i` to install the dependencies
 
