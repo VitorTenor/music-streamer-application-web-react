@@ -24,10 +24,10 @@ export default function Musics() {
   const [musics, setMusics] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [urlPLay, setUrlPlay] = useState('');
-  const [currentMusic, setCurrentMusic] = useState(musics[0].id);
-  // const token = sessionStorage.getItem('token');
+  const [currentMusic, setCurrentMusic] = useState([]);
   const userId = sessionStorage.getItem('userId');
   const [show, setShow] = useState(true);
+  const BASE_URL_PLAY = 'http://localhost:8081/music-streamer/v1/musics/play/';
 
   React.useEffect(() => {
     async function getData() {
@@ -35,7 +35,6 @@ export default function Musics() {
       const response = await axios.get('/musics');
       setMusics(response.data);
       setIsLoading(false);
-      console.log(response.data);
     }
     getData();
   }, []);
@@ -43,9 +42,7 @@ export default function Musics() {
     e.preventDefault();
     setCurrentMusic(music);
     try {
-      setUrlPlay(
-        `http://localhost:8081/music-streamer/v1/musics/play/${music.id}`
-      );
+      setUrlPlay(BASE_URL_PLAY + music.id);
     } catch (err) {
       console.log(err);
     }
@@ -64,9 +61,7 @@ export default function Musics() {
     e.preventDefault();
     try {
       const nextMusic = currentMusic.id - 1;
-      setUrlPlay(
-        `http://localhost:8081/music-streamer/v1/musics/play/${nextMusic}`
-      );
+      setUrlPlay(BASE_URL_PLAY + nextMusic);
     } catch (err) {
       console.log(err);
     }
@@ -79,18 +74,33 @@ export default function Musics() {
       setShow(true);
     }
   };
+  const HandleNewMusic = () => {
+    sessionStorage.removeItem('savedMusicId');
+    sessionStorage.removeItem('savedMusicImageId');
+    sessionStorage.removeItem('savedMusicImageUrl');
+    sessionStorage.removeItem('savedMusicName');
+    sessionStorage.removeItem('savedMusicGenre');
+    sessionStorage.removeItem('savedMusicArtist');
+    sessionStorage.removeItem('savedMusicAlbum');
+    sessionStorage.removeItem('savedMusicPath');
+  };
+
   return (
     <Container>
       <Loading isLoading={isLoading} />
       <h1>Musics</h1>
       {userId ? (
-        <NewMusic to="/music">Add new music</NewMusic>
+        <NewMusic to="/new-music" onClick={HandleNewMusic}>
+          Add new music
+        </NewMusic>
       ) : (
         <Login to="/login">Login to add musics</Login>
       )}
-      <ChangePlay>
-        <FaRedo onClick={(e) => changePlayer(e)} />
-      </ChangePlay>
+      {urlPLay ? (
+        <ChangePlay>
+          <FaRedo onClick={(e) => changePlayer(e)} />
+        </ChangePlay>
+      ) : null}
       {show ? (
         <MusicContainer>
           {musics.map((music) => (

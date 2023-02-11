@@ -7,19 +7,17 @@ import {
   FaPowerOff,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
 
-import * as actions from '../../store/modules/auth/actions';
 import { Nav } from './styled';
 import history from '../../services/history';
 
 export default function Header() {
-  const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const isLoggedIn = sessionStorage.getItem('userId');
 
   const handleLogout = (e) => {
     e.preventDefault();
-    dispatch(actions.loginFailure());
+    sessionStorage.clear();
+    window.location.reload();
     history.push('/');
   };
 

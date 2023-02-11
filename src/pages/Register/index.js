@@ -9,7 +9,7 @@ import Loading from '../../components/Loading';
 import { registerRequest } from '../../services/ApiService';
 
 export default function Register() {
-  const id = sessionStorage.getItem('id');
+  const id = sessionStorage.getItem('userId');
   const nomeStored = sessionStorage.getItem('name');
   const emailStored = sessionStorage.getItem('email');
   const [isLoading, setIsLoading] = useState(false);
@@ -61,16 +61,16 @@ export default function Register() {
   return (
     <Container>
       <Loading isLoading={isLoading} />
-      <h1>{id ? 'Editar dados' : 'Crie sua conta'}</h1>
+      <h1>{id ? 'Edit' : 'Create your account'}</h1>
 
       <Form onClick={handleSubmit}>
         <label htmlFor="nome">
-          Nome:
+          Name:
           <input
             type="text"
             value={nome}
             onChange={(e) => setNome(e.target.value)}
-            placeholder="Seu nome"
+            placeholder="Your name"
           />
         </label>
 
@@ -80,21 +80,21 @@ export default function Register() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Seu email"
+            placeholder="Your email"
           />
         </label>
 
         <label htmlFor="password">
-          Senha:
+          Password :
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Sua senha"
+            placeholder="Your password"
           />
         </label>
 
-        <button type="submit">{id ? 'Salvar' : 'Criar minha conta'}</button>
+        <button type="submit">{id ? 'Save' : 'Create my account'}</button>
       </Form>
     </Container>
   );
