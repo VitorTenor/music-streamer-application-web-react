@@ -8,6 +8,7 @@ import { Avatar } from '@bigheads/core';
 import { Container } from '../../styles/GlobalStyles';
 import axios from '../../services/axios';
 import {
+  Playlists,
   MusicContainer,
   NewMusic,
   MusicImage,
@@ -90,9 +91,12 @@ export default function Musics() {
       <Loading isLoading={isLoading} />
       <h1>Musics</h1>
       {userId ? (
-        <NewMusic to="/new-music" onClick={HandleNewMusic}>
-          Add new music
-        </NewMusic>
+        <default>
+          <NewMusic to="/new-music" onClick={HandleNewMusic}>
+            Add new music
+          </NewMusic>
+          <Playlists to="/playlists">Playlists</Playlists>
+        </default>
       ) : (
         <Login to="/login">Login to add musics</Login>
       )}

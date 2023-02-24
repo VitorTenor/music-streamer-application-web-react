@@ -1,6 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import * as colors from '../config/colors';
 import 'react-toastify/dist/ReactToastify.css';
+import BackgroundImage from '../assets/image.jpg';
 
 export default createGlobalStyle`
   * {
@@ -12,8 +13,10 @@ export default createGlobalStyle`
 
   body {
     font-family: sans-serif;
-    background: ${colors.primaryDarkColor};
     color: ${colors.primaryDarkColor};
+    background-image: url(${BackgroundImage});
+    background-size: cover;
+    height: 100vh;
   }
 
   html, border-style, #root {
@@ -67,7 +70,7 @@ body .Toastify .Toastify__toast-container .Toastify__toast--error {
 export const Container = styled.section`
   max-width: 480px;
   background: #fff;
-  margin: 30px auto;
+  margin: 7.5em auto;
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);

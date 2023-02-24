@@ -47,7 +47,6 @@ export default function Login() {
   return (
     <Container>
       <Loading isLoading={isLoading} />
-
       <h1>Login</h1>
 
       <Form onClick={handleSubmit}>

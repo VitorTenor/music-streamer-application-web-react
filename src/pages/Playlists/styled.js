@@ -30,7 +30,7 @@ export const MusicImage = styled.div`
   }
 `;
 
-export const Playlists = styled(Link)`
+export const NewMusic = styled(Link)`
   border: 1px solid ${colors.primaryDarkColor};
   border-radius: 30px;
   margin-top: 20px;
@@ -40,7 +40,7 @@ export const Playlists = styled(Link)`
   padding: 5px 5px 5px 5px;
 `;
 
-export const NewMusic = styled(Link)`
+export const Playlist = styled(Link)`
   border: 1px solid ${colors.primaryDarkColor};
   border-radius: 30px;
   margin-top: 20px;

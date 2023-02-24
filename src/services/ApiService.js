@@ -44,11 +44,10 @@ export async function NewMusicRequest(payload) {
   try {
     const config = {
       headers: {
-        'Content-Type': 'application/form-data',
         Authentication: `Bearer ${sessionStorage.getItem('token')} `,
       },
     };
-    const response = await axios.post('/musics', payload, config);
+    const response = await axios.post('/musics/upload', payload, config);
     if (response.status === 200) {
       sessionStorage.setItem('savedMusicId', response.data.id);
       sessionStorage.setItem('savedMusicName', response.data.name);
@@ -99,6 +98,21 @@ export async function MusicById(id) {
     }
   } catch (err) {
     toast.error('Error to find music');
+    return err;
+  }
+}
+
+export async function NewPlaylistRequest(payload) {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authentication: `Bearer ${sessionStorage.getItem('token')} `,
+      },
+    };
+    const response = await axios.post(`/playlists`, payload, config);
+    return response;
+  } catch (err) {
     return err;
   }
 }
